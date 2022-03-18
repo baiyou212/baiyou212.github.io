@@ -1,8 +1,4 @@
-lightbox.option({
-  resizeDuration: 100,
-  wrapAround: true,
-  disableScrolling: true,
-});
+
 
 // let couts = 0;
 const left = document.querySelector(".prev");
