@@ -41,20 +41,6 @@ function slideshow(slide) {
     slides.style.transform = `translateX(-${cout * 265}%)`;
   });
 }
-function next(){
-  cout++
-  console.log(cout);
-  const slide = document.querySelectorAll(".berita-slide");
-  if (cout > slide.length -1) {
-cout=0
-  }
-  for (let i = 0; i < slide.length; i++) {
-slide[i].style.display = 'none'
-  }
-  slide[cout].style.display = 'inline-block'
-  slide[cout].classList.add('active')
-}
-
 
 function DisplaySidebar() {
   const hamburger = document.querySelector("#openSidebar");
@@ -116,6 +102,49 @@ function dotClicks() {
   }
 }
 dotClicks();
+
+function PlayMovie(){
+    const modal = document.querySelector(".modal-video");
+    const play = document.querySelector('.play')
+    play.addEventListener('click',function(e){
+      modal.innerHTML = modalz();
+      e.preventDefault()
+    })
+
+  //   modal.classList.remove("show");
+  // setTimeout(() => {
+  //     modal.classList.add("modals");
+  // }, 100);
+  }
+  const modal = document.querySelector(".modal-video");
+  const play = document.querySelector('.play')
+  play.addEventListener('click',function(e){
+    modal.innerHTML = modalz();
+    modal.classList.add("modals");
+    e.preventDefault()
+  })
+  function modalz() {
+  return `
+<div class="box-video">
+<iframe  class="responsive-iframe" src="https://www.youtube.com/embed/-4enFkJtSsU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+`
+  }
+
+  function tutupModal() {
+    const modal = document.querySelector(".modal-video");
+    modal.addEventListener("click", function(e){
+      e.preventDefault();
+      if (e.target.classList.contains("modals")) {
+        e.target.classList.remove("modals");
+        const modal = document.querySelector(".modal-video");
+        // modal.classList.add("show");
+        modal.innerHTML = " "
+      }
+    });
+  }
+  
+  tutupModal() 
 
 function DropMenuHTML() {
   const menu = document.querySelector(".drop-menu");
